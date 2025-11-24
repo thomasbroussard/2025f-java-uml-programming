@@ -1,6 +1,7 @@
 package fr.epita.bank.launcher;
 
 import fr.epita.bank.datamodel.Customer;
+import fr.epita.bank.datamodel.SavingsAccount;
 
 public class Main {
 
@@ -19,6 +20,28 @@ public class Main {
         Customer customer = new Customer();
         customer.setName("John");
         customer.setAddress("Paris");
+
+        SavingsAccount savingsAccount = new SavingsAccount();
+        savingsAccount.setBalance(amount);
+        savingsAccount.setInterestRate(rate);
+        savingsAccount.setCustomer(customer);
+
+        savingsAccount.setBalance(savingsAccount.getBalance() - 200);
+
+        double gain = savingsAccount.getBalance() * savingsAccount.getInterestRate() / (double) 100;
+
+        // 2. buy stocks
+        // a. define a stock "GOLD", value: 800€ / unit
+        // b. initialize an investment account linked to the same customer
+        // c. set the balance to 3000€
+        // d. buy 3 units of GOLD
+        // e. GOLD price has increase (+300€ per unit)
+        // f. compute the added value if the units are sold.
+        // g. apply a commission of 5% on added values to estimate the bank commission on the transaction.
+
+
+
+
 
 
     }
