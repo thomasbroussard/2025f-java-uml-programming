@@ -4,13 +4,13 @@ public class Account {
 
 
     private Customer customer;
-    private int balance;
+    private long balance;
 
-    public int getBalance() {
+    public long getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(long balance) {
         this.balance = balance;
     }
 
