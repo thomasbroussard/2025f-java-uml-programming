@@ -62,8 +62,7 @@ public class Main {
         investmentAccount.setBalance(Math.round(investmentAccount.getBalance()  + stockOrder.getUnitPrice() * stockOrder.getQuantity()  - commission));
         //TODO implement the sellStocks from accountService and replace here.
 
-
-
+        
 
     }
 

@@ -24,6 +24,7 @@ public class AccountService {
 
     public static StockOrder sellStock(StockOrder buyingStockOrder, InvestmentAccount investmentAccount, int quantity) {
         //TODO to be implemented
+        return null;
     }
 
     public static int computeAddedValue(StockOrder order){
