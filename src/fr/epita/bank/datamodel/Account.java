@@ -6,6 +6,11 @@ public class Account {
     private Customer customer;
     private long balance;
 
+    public Account(Customer customer, long balance) {
+        this.customer = customer;
+        this.balance = balance;
+    }
+
     public long getBalance() {
         return balance;
     }

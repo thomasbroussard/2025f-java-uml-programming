@@ -24,10 +24,8 @@ public class Main {
         customer.setName("John");
         customer.setAddress("Paris");
 
-        SavingsAccount savingsAccount = new SavingsAccount();
-        savingsAccount.setBalance(amount);
-        savingsAccount.setInterestRate(rate);
-        savingsAccount.setCustomer(customer);
+        SavingsAccount savingsAccount = new SavingsAccount(customer, amount, rate );
+
 
         savingsAccount.setBalance(savingsAccount.getBalance() - 200);
 
@@ -41,11 +39,10 @@ public class Main {
         stock.setUnitPrice(800);
 
         // b. initialize an investment account linked to the same customer
-        InvestmentAccount investmentAccount = new InvestmentAccount();
+        // c. set the balance to 3000€
+        InvestmentAccount investmentAccount = new InvestmentAccount(customer, 3000 );
         investmentAccount.setCustomer(customer);
 
-        // c. set the balance to 3000€
-        investmentAccount.setBalance(3000);
 
         // d. buy 3 units of GOLD
         StockOrder stockOrder = AccountService.buyStocks(investmentAccount, stock, 3);
@@ -54,34 +51,20 @@ public class Main {
         stock.setUnitPrice(stock.getUnitPrice() + 300);
 
         // f. compute the added value if the units are sold.
-        int boughtUnitPrice = stockOrder.getUnitPrice();
-        int currentUnitPrice = stock.getUnitPrice();
 
-        int difference = (currentUnitPrice - boughtUnitPrice) * stockOrder.getQuantity();
-        double increaseRate = difference *100d / boughtUnitPrice;
 
-        System.out.println("Increase rate: " + increaseRate);
+        int difference = AccountService.computeAddedValue(stockOrder);
+        System.out.println("Increase rate: " + AccountService.computeIncreaseRate(stockOrder));
 
         // g. apply a commission of 5% on added values to estimate the bank commission on the transaction.
         double commission = difference * 0.05;
         System.out.println("Commission: " + commission);
-        investmentAccount.setBalance(Math.round(investmentAccount.getBalance()  + currentUnitPrice * stockOrder.getQuantity()  - commission));
-
+        investmentAccount.setBalance(Math.round(investmentAccount.getBalance()  + stockOrder.getUnitPrice() * stockOrder.getQuantity()  - commission));
+        //TODO implement the sellStocks from accountService and replace here.
 
 
 
 
     }
 
-    private static StockOrder getStockOrder(Stock stock, InvestmentAccount investmentAccount) {
-        StockOrder stockOrder = new StockOrder();
-        stockOrder.setQuantity(3);
-        stockOrder.setUnitPrice(stock.getUnitPrice());
-        stockOrder.setTimestamp(new Date().getTime());
-        stockOrder.setStock(stock);
-        stockOrder.setInvestmentAccount(investmentAccount);
-
-        investmentAccount.setBalance(investmentAccount.getBalance() - stockOrder.getQuantity() * stockOrder.getUnitPrice());
-        return stockOrder;
-    }
 }

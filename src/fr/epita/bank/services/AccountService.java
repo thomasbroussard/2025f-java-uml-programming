@@ -22,4 +22,20 @@ public class AccountService {
         return stockOrder;
     }
 
+    public static StockOrder sellStock(StockOrder buyingStockOrder, InvestmentAccount investmentAccount, int quantity) {
+        //TODO to be implemented
+    }
+
+    public static int computeAddedValue(StockOrder order){
+        int boughtUnitPrice = order.getUnitPrice();
+        int currentUnitPrice = order.getStock().getUnitPrice();
+        return (currentUnitPrice - boughtUnitPrice) * order.getQuantity();
+
+    }
+
+    public static double computeIncreaseRate(StockOrder order){
+        int difference = computeAddedValue(order);
+        return difference *100d / order.getUnitPrice();
+
+    }
 }
