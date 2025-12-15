@@ -4,9 +4,7 @@ import fr.epita.biostats.datamodel.Person;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -45,6 +43,34 @@ public class Main {
                 .mapToInt(Person::getAge)
                 .average()
                 .getAsDouble();
+
+        int countM = 0;
+        int countF = 0;
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getSex().equals("M")) {
+                countM++;
+            }else if (list.get(i).getSex().equals("F")) {
+                countF++;
+            }
+        }
+        System.out.println( "count Male = " + countM);
+        System.out.println( "count Female = " + countF);
+
+        Map<String,Integer> map = new HashMap<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            String key = list.get(i).getSex();
+            Integer currentCount = map.get(key);
+            if (currentCount == null) {
+                currentCount = 1;
+            } else {
+                currentCount++;
+            }
+            map.put(key,currentCount);
+
+        }
+        System.out.println(map);
+
 
 
     }
