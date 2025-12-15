@@ -5,7 +5,7 @@ import fr.epita.bank.datamodel.Customer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.*;
 
 public class MainWithIO {
 
@@ -21,6 +21,10 @@ public class MainWithIO {
 
         Scanner fileInput =new Scanner(new File("demo.csv"));
         fileInput.nextLine();
+
+        List<Customer> list = new ArrayList<>();
+
+
         while (fileInput.hasNextLine()) {
             String line = fileInput.nextLine();
             String[] parts = line.split(";");
@@ -30,8 +34,12 @@ public class MainWithIO {
             currentCustomer.setName(currentName);
             currentCustomer.setAddress(address);
             System.out.println(line);
+            list.add(currentCustomer);
         }
+
+        System.out.println(list.size());
         fileInput.close();
+
 
         input.close();
     }
