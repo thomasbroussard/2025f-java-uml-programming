@@ -72,6 +72,12 @@ public class Main {
         System.out.println(map);
 
 
+        Set<Person> set = new HashSet<>();
 
+        set.addAll(list);
+        set.addAll(list);
+
+
+        System.out.println("set size :" + set.size());
     }
 }
