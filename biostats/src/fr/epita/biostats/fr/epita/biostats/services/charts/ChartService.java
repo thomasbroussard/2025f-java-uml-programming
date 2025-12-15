@@ -1,8 +1,6 @@
 package fr.epita.biostats.fr.epita.biostats.services.charts;
 
-import org.knowm.xchart.CategoryChart;
-import org.knowm.xchart.CategoryChartBuilder;
-import org.knowm.xchart.SwingWrapper;
+import org.knowm.xchart.*;
 import org.knowm.xchart.style.Styler;
 
 import java.util.*;
@@ -10,20 +8,37 @@ import java.util.*;
 public class ChartService {
 
 
-        public static void displayCategoryChart(Map<String, ? extends Number> map, String title) {
+    public static void displayCategoryChart(Map<String, ? extends Number> map, String title) {
 
-            // Create Chart
-            CategoryChart chart = new CategoryChartBuilder().width(800).height(600).title("Score Histogram").xAxisTitle("Score").yAxisTitle("Number").build();
+        // Create Chart
+        CategoryChart chart = new CategoryChartBuilder().width(800).height(600).title("Score Histogram").xAxisTitle("Score").yAxisTitle("Number").build();
 
-            // Customize Chart
-            chart.getStyler().setLegendPosition(Styler.LegendPosition.InsideNW);
+        // Customize Chart
+        chart.getStyler().setLegendPosition(Styler.LegendPosition.InsideNW);
 
 
-            // Series
-            chart.addSeries(title,
-                    new ArrayList<>(map.keySet()),
-                    new ArrayList<>(map.values()));
+        // Series
+        chart.addSeries(title,
+                new ArrayList<>(map.keySet()),
+                new ArrayList<>(map.values()));
 
-            new SwingWrapper<CategoryChart>(chart).displayChart();
-        }
+        new SwingWrapper<CategoryChart>(chart).displayChart();
+    }
+
+    public static void displayScatterPlot(List<? extends Number> xAxis, List<? extends Number> yAxis, String title) {
+        // Create Chart
+        XYChart chart = new XYChartBuilder().width(800).height(600).build();
+
+        // Customize Chart
+        chart.getStyler().setDefaultSeriesRenderStyle(XYSeries.XYSeriesRenderStyle.Scatter);
+        chart.getStyler().setChartTitleVisible(false);
+        chart.getStyler().setLegendPosition(Styler.LegendPosition.InsideSW);
+        chart.getStyler().setMarkerSize(16);
+
+        // Series
+        chart.addSeries(title, xAxis, yAxis);
+
+        new SwingWrapper<XYChart>(chart).displayChart();
+    }
+
 }

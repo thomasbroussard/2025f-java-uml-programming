@@ -6,6 +6,7 @@ import fr.epita.biostats.fr.epita.biostats.services.charts.ChartService;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
 
@@ -82,5 +83,9 @@ public class Main {
         System.out.println("set size :" + set.size());
 
         ChartService.displayCategoryChart(map, "gender distribution");
+
+        List<Integer> heights = list.stream().map(Person::getHeight).toList();
+        List<Integer> weights = list.stream().map(Person::getWeight).toList();
+        ChartService.displayScatterPlot(weights, heights, "weights x height");
     }
 }
