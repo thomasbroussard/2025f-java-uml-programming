@@ -1,6 +1,7 @@
 package fr.epita.biostats.launchers;
 
 import fr.epita.biostats.datamodel.Person;
+import fr.epita.biostats.fr.epita.biostats.services.charts.ChartService;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -79,5 +80,7 @@ public class Main {
 
 
         System.out.println("set size :" + set.size());
+
+        ChartService.displayCategoryChart(map, "gender distribution");
     }
 }
