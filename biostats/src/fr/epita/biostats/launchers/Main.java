@@ -35,6 +35,17 @@ public class Main {
         }
 
         System.out.println(list.size());
+        double sum = 0.0;
+        for(int i = 0; i < list.size(); i++){
+            sum += list.get(i).getAge();
+        }
+        double average = sum / list.size();
+
+        list.parallelStream()
+                .mapToInt(Person::getAge)
+                .average()
+                .getAsDouble();
+
 
     }
 }
