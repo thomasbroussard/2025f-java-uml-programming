@@ -25,6 +25,24 @@ public class ChartService {
         new SwingWrapper<CategoryChart>(chart).displayChart();
     }
 
+    public static void displayPieChart(Map<?, ? extends Number> map, String title) {
+
+        // Create Chart
+        PieChart chart = new PieChartBuilder().width(800).height(600).title(title).build();
+
+        // Customize Chart
+        chart.getStyler().setLegendPosition(Styler.LegendPosition.InsideNW);
+
+
+        // Series
+        for (Object key : map.keySet()) {
+            chart.addSeries(String.valueOf(key),map.get(key));
+        }
+
+
+        new SwingWrapper<PieChart>(chart).displayChart();
+    }
+
     public static void displayScatterPlot(List<? extends Number> xAxis, List<? extends Number> yAxis, String title) {
         // Create Chart
         XYChart chart = new XYChartBuilder().width(800).height(600).build();

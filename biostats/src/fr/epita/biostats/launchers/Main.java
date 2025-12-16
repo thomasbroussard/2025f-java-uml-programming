@@ -87,5 +87,25 @@ public class Main {
         List<Integer> heights = list.stream().map(Person::getHeight).toList();
         List<Integer> weights = list.stream().map(Person::getWeight).toList();
         ChartService.displayScatterPlot(weights, heights, "weights x height");
+
+
+        Map<Integer,Integer> ageMap = new HashMap<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            Integer key = list.get(i).getAge();
+            Integer currentCount = ageMap.get(key);
+            if (currentCount == null) {
+                currentCount = 1;
+            } else {
+                currentCount++;
+            }
+            ageMap.put(key,currentCount);
+        }
+
+        ChartService.displayPieChart(ageMap, "age distribution");
+
+
+
+
     }
 }
