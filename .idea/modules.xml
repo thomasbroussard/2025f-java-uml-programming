@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/biostats/biostats.iml" filepath="$PROJECT_DIR$/biostats/biostats.iml" />
+      <module fileurl="file://$PROJECT_DIR$/titanic/titanic.iml" filepath="$PROJECT_DIR$/titanic/titanic.iml" />
     </modules>
   </component>
 </project>

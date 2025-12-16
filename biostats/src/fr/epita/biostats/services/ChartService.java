@@ -1,4 +1,4 @@
-package fr.epita.biostats.fr.epita.biostats.services.charts;
+package fr.epita.biostats.services;
 
 import org.knowm.xchart.*;
 import org.knowm.xchart.style.Styler;

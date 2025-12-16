@@ -1,12 +1,11 @@
 package fr.epita.biostats.launchers;
 
 import fr.epita.biostats.datamodel.Person;
-import fr.epita.biostats.fr.epita.biostats.services.charts.ChartService;
+import fr.epita.biostats.ChartService;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
 
